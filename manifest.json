@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Shorts Remover",
+  "version": "1.0.0",
+  "description": "Całkowicie usuwa sekcję YouTube Shorts z interfejsu YouTube.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "css": ["styles.css"],
+      "js": ["config.js", "content.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": ["config.js", "gemini.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
