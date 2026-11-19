@@ -31,6 +31,9 @@ html.ytsr-enabled.ytsr-hide-individual ytd-grid-video-renderer:has(a[href^="/sho
 html.ytsr-enabled.ytsr-hide-individual ytd-compact-video-renderer:has(a[href^="/shorts/"]),
 html.ytsr-enabled.ytsr-hide-individual ytm-shorts-lockup-view-model,
 html.ytsr-enabled.ytsr-hide-individual ytm-shorts-lockup-view-model-v2,
+html.ytsr-enabled.ytsr-hide-individual ytm-video-with-context-renderer:has(a[href^="/shorts/"]),
+html.ytsr-enabled.ytsr-hide-individual ytm-rich-item-renderer:has(a[href^="/shorts/"]),
+html.ytsr-enabled.ytsr-hide-individual ytm-compact-video-renderer:has(a[href^="/shorts/"]),
 html.ytsr-enabled.ytsr-hide-individual ytd-video-renderer:has([overlay-style="SHORTS"]) {
   display: none !important;
 }

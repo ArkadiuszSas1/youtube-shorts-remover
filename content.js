@@ -81,7 +81,7 @@
       const shortLinks = document.querySelectorAll('a[href^="/shorts/"]');
       for (const link of shortLinks) {
         const card = link.closest(
-          "ytd-video-renderer, ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2"
+          "ytd-video-renderer, ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer, ytm-rich-item-renderer, ytm-compact-video-renderer, ytm-video-card-renderer, ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2"
         );
         if (card) {
           hideElement(card);
@@ -170,12 +170,13 @@
     if (!config.showGeminiCardButton) return;
 
     const cards = document.querySelectorAll(
-      "ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-video-renderer"
+      "ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-video-renderer, ytm-video-with-context-renderer, ytm-rich-item-renderer, ytm-compact-video-renderer, ytm-video-card-renderer"
     );
 
     for (const card of cards) {
       if (card.classList.contains("ytsr-hidden")) continue;
-      if (card.querySelector(".ytsr-card-gemini-btn")) continue;
+      const outerCard = card.closest("ytm-rich-item-renderer, ytd-rich-item-renderer") || card;
+      if (outerCard.querySelector(".ytsr-card-gemini-btn")) continue;
 
       const watchLink = card.querySelector('a[href*="/watch?v="]');
       if (!watchLink) continue;
@@ -184,7 +185,9 @@
         card.querySelector(".yt-lockup-metadata-view-model__text-container") ||
         card.querySelector("yt-lockup-metadata-view-model") ||
         card.querySelector("#meta") ||
-        card.querySelector("#details");
+        card.querySelector("#details") ||
+        card.querySelector(".media-item-info") ||
+        card.querySelector(".details");
 
       if (!metaContainer) continue;
 
